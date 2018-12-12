@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8.12)  # Ships with Ubuntu 14.04 (Trusty)
 
-project(cartographer_kitti)
+project(cartographer_kitti_config)
 
 set(PACKAGE_DEPENDENCIES
   cartographer_ros
