@@ -1,0 +1,25 @@
+<launch>
+  <param name="/use_sim_time" value="true" />
+
+  <include file="$(find cartographer_ros)/launch/kitti_2d.launch" />
+
+  <node name="rviz" pkg="rviz" type="rviz" required="true"
+      args="-d $(find cartographer_ros)/configuration_files/kitti_2d.rviz" />
+
+  <node name="playbag" pkg="rosbag" type="play" args="--rate 0.3 --clock $(arg bag_filename)">
+  	   <remap from="/kitti/oxts/imu" to="/imu" />
+	   <remap from="/tf" to="/tf_in" />
+    </node>
+
+    <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan">
+        <remap from="cloud_in" to="/kitti/velo/pointcloud"/>
+    </node>
+
+    <node name="tf_remove_frames" pkg="cartographer_ros"
+      type="tf_remove_frames.py">
+    <remap from="tf_out" to="/tf" />
+    <rosparam param="remove_frames">
+      - world
+    </rosparam>
+  </node>
+</launch>

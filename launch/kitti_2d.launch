@@ -1,0 +1,9 @@
+
+<launch>
+  <node name="cartographer" pkg="cartographer_ros"
+      type="cartographer_node" args="
+          -configuration_directory $(find cartographer_ros)/configuration_files
+          -configuration_basename kitti_2d.lua"
+      output="screen">
+  </node>
+</launch>
