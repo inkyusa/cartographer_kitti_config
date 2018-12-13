@@ -7,7 +7,9 @@ Panels:
         - /Status1
         - /kitti_tf1
         - /Submaps1
+        - /MarkerArray1
         - /PointCloud21
+        - /Map1
       Splitter Ratio: 0.5
     Tree Height: 1121
   - Class: rviz/Selection
@@ -73,6 +75,8 @@ Visualization Manager:
           Value: true
         velo_link:
           Value: false
+        world:
+          Value: true
       Marker Scale: 10
       Name: kitti_tf
       Show Arrows: true
@@ -119,15 +123,15 @@ Visualization Manager:
     - Alpha: 0.5
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 113.878036
-        Min Value: 15.141407
+        Max Value: 186.708649
+        Min Value: 88.7128525
         Value: true
       Axis: X
       Channel Name: intensity
       Class: rviz/PointCloud2
       Color: 255; 255; 255
       Color Transformer: AxisColor
-      Decay Time: 10
+      Decay Time: 20
       Enabled: true
       Invert Rainbow: false
       Max Color: 255; 255; 255
@@ -138,7 +142,7 @@ Visualization Manager:
       Position Transformer: XYZ
       Queue Size: 10
       Selectable: true
-      Size (Pixels): 2
+      Size (Pixels): 1
       Size (m): 0.100000001
       Style: Points
       Topic: /scan_matched_points2
@@ -150,12 +154,12 @@ Visualization Manager:
       Class: rviz/Map
       Color Scheme: map
       Draw Behind: false
-      Enabled: true
+      Enabled: false
       Name: Map
       Topic: /map
       Unreliable: false
       Use Timestamp: false
-      Value: true
+      Value: false
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -181,7 +185,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 214.275711
+      Distance: 205.348877
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
@@ -196,10 +200,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.694797218
+      Pitch: 0.189795732
       Target Frame: base_link
       Value: Orbit (rviz)
-      Yaw: 3.66043782
+      Yaw: 3.79039717
     Saved: ~
 Window Geometry:
   Displays:
@@ -217,5 +221,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 2210
-  X: 2999
-  Y: 44
+  X: 3008
+  Y: 45

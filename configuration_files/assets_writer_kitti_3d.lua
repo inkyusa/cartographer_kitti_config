@@ -32,46 +32,46 @@ options = {
       action = "fixed_ratio_sampler",
       sampling_ratio = 0.1,
     },
-    {
-      action = "intensity_to_color",
-      min_intensity = 0,
-      max_intensity = 100,
-    },
-    {
-      action = "write_ply",
-      filename = "points.ply",
-    },
+    -- {
+    --   action = "intensity_to_color",
+    --   min_intensity = 0,
+    --   max_intensity = 100,
+    -- },
+    -- {
+    --   action = "write_pcd",
+    --   filename = "points.pcd",
+    -- },
 
     -- Gray X-Rays. These only use geometry to color pixels.
-    {
-      action = "write_xray_image",
-      voxel_size = VOXEL_SIZE,
-      filename = "xray_yz_all",
-      transform = YZ_TRANSFORM,
-    },
+    -- {
+    --   action = "write_xray_image",
+    --   voxel_size = VOXEL_SIZE,
+    --   filename = "xray_yz_all",
+    --   transform = YZ_TRANSFORM,
+    -- },
     {
       action = "write_xray_image",
       voxel_size = VOXEL_SIZE,
       filename = "xray_xy_all",
       transform = XY_TRANSFORM,
     },
-    {
-      action = "write_xray_image",
-      voxel_size = VOXEL_SIZE,
-      filename = "xray_xz_all",
-      transform = XZ_TRANSFORM,
-    },
-    {
-      action = "write_probability_grid",
-      draw_trajectories = true,
-      resolution = 0.05,
-      range_data_inserter = {
-        insert_free_space = true,
-        hit_probability = 0.55,
-        miss_probability = 0.49,
-      },
-      filename = "probability_grid",
-    },
+    -- {
+    --   action = "write_xray_image",
+    --   voxel_size = VOXEL_SIZE,
+    --   filename = "xray_xz_all",
+    --   transform = XZ_TRANSFORM,
+    -- },
+    -- {
+    --   action = "write_probability_grid",
+    --   draw_trajectories = true,
+    --   resolution = 0.05,
+    --   range_data_inserter = {
+    --     insert_free_space = true,
+    --     hit_probability = 0.55,
+    --     miss_probability = 0.49,
+    --   },
+    --   filename = "probability_grid",
+    -- },
     -- {
     --   action = "color_points",
     --   frame_id = "velo_link",

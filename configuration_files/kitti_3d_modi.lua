@@ -41,34 +41,55 @@ options = {
   imu_sampling_ratio = 1.,
   landmarks_sampling_ratio = 1.,
 }
-
+-- ============================================
+--        TRAJECTORY_BUILDER_3D params (local SLAM)
+-- ============================================
 TRAJECTORY_BUILDER_3D.num_accumulated_range_data = 1
-
-MAP_BUILDER.use_trajectory_builder_3d = true
-MAP_BUILDER.num_background_threads = 8
-POSE_GRAPH.optimization_problem.huber_scale = 5e2
---POSE_GRAPH.optimize_every_n_nodes = 320
-POSE_GRAPH.optimize_every_n_nodes = 100
-
-POSE_GRAPH.constraint_builder.sampling_ratio = 0.03
-POSE_GRAPH.optimization_problem.ceres_solver_options.max_num_iterations = 10
-POSE_GRAPH.constraint_builder.min_score = 0.62
-POSE_GRAPH.constraint_builder.global_localization_min_score = 0.66
--- POSE_GRAPH.constraint_builder.min_score = 0.55
--- POSE_GRAPH.constraint_builder.global_localization_min_score = 0.55
-POSE_GRAPH.optimization_problem.log_solver_summary = true
-
--- Modifications
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.translation_weight = 5. 
-
 TRAJECTORY_BUILDER_3D.use_online_correlative_scan_matching = true
 TRAJECTORY_BUILDER_3D.imu_gravity_time_constant = .1
 TRAJECTORY_BUILDER_3D.voxel_filter_size = 0.3
 TRAJECTORY_BUILDER_3D.submaps.high_resolution = 0.2
 
-
--- No point of trying to SLAM over the points on your cart.
+-- No point of trying to SLAM over the points on your car
 TRAJECTORY_BUILDER_3D.min_range = 1.0
 TRAJECTORY_BUILDER_3D.max_range = 50
+TRAJECTORY_BUILDER_3D.motion_filter.max_time_seconds = 0.5
+TRAJECTORY_BUILDER_3D.motion_filter.max_distance_meters = 0.3
+TRAJECTORY_BUILDER_3D.motion_filter.max_angle_radians = math.rad(5.)
+--TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 8e2
+
+-- ============================================
+--        MAP_BUILDER params (trivial thing that switching 2D or 3D)
+-- ============================================
+MAP_BUILDER.use_trajectory_builder_3d = true
+MAP_BUILDER.num_background_threads = 8
+
+-- ============================================
+--        POSE_GRAPH params (global SLAM)
+-- ============================================
+POSE_GRAPH.optimization_problem.huber_scale = 5e2
+--POSE_GRAPH.optimization_problem.rotation_weight = 6e5
+--POSE_GRAPH.optimize_every_n_nodes = 320
+POSE_GRAPH.optimize_every_n_nodes = 100
+
+POSE_GRAPH.constraint_builder.sampling_ratio = 0.03
+POSE_GRAPH.optimization_problem.ceres_solver_options.max_num_iterations = 100
+POSE_GRAPH.constraint_builder.min_score = 0.62
+POSE_GRAPH.constraint_builder.global_localization_min_score = 0.66
+
+POSE_GRAPH.constraint_builder.max_constraint_distance = 250.
+POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.linear_xy_search_window = 250.
+POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.linear_z_search_window = 30.
+POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.angular_search_window = math.rad(60.)
+
+-- POSE_GRAPH.constraint_builder.ceres_scan_matcher.rotation_weight = 10.
+
+-- POSE_GRAPH.constraint_builder.min_score = 0.55
+-- POSE_GRAPH.constraint_builder.global_localization_min_score = 0.55
+POSE_GRAPH.optimization_problem.log_solver_summary = true
+
+
+
 
 return options
