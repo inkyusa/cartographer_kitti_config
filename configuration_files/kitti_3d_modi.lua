@@ -57,12 +57,12 @@ TRAJECTORY_BUILDER_3D.submaps.high_resolution_max_range = 50.
 
 -- No point of trying to SLAM over the points on your car
 TRAJECTORY_BUILDER_3D.min_range = 1.0
-TRAJECTORY_BUILDER_3D.max_range = 50.
+TRAJECTORY_BUILDER_3D.max_range = 60.
 TRAJECTORY_BUILDER_3D.motion_filter.max_time_seconds = 0.5
 TRAJECTORY_BUILDER_3D.motion_filter.max_distance_meters = 0.3
 TRAJECTORY_BUILDER_3D.motion_filter.max_angle_radians = math.rad(5.)
-TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 4e1
-TRAJECTORY_BUILDER_3D.ceres_scan_matcher.translation_weight = 8
+TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 4.5e1 --4e1
+TRAJECTORY_BUILDER_3D.ceres_scan_matcher.translation_weight = 7 --6
 
 -- ============================================
 --        MAP_BUILDER params (trivial thing that switching 2D or 3D)
@@ -73,7 +73,9 @@ MAP_BUILDER.num_background_threads = 8
 -- ============================================
 --        POSE_GRAPH params (global SLAM)
 -- ============================================
-POSE_GRAPH.optimization_problem.huber_scale = 5e2
+-- The bigger the Huber scale, the higher is the impact of (potential) outliers.
+POSE_GRAPH.optimization_problem.huber_scale = 1e2
+
 --POSE_GRAPH.optimization_problem.rotation_weight = 6e5
 --POSE_GRAPH.optimize_every_n_nodes = 320
 POSE_GRAPH.optimize_every_n_nodes = 150
@@ -85,17 +87,17 @@ POSE_GRAPH.constraint_builder.sampling_ratio = 0.1
 
 POSE_GRAPH.optimization_problem.ceres_solver_options.max_num_iterations = 100
 --POSE_GRAPH.constraint_builder.min_score = 0.62
-POSE_GRAPH.constraint_builder.min_score = 0.30
+POSE_GRAPH.constraint_builder.min_score = 0.45
 
 --POSE_GRAPH.constraint_builder.global_localization_min_score = 0.66
-POSE_GRAPH.constraint_builder.global_localization_min_score = 0.30
+POSE_GRAPH.constraint_builder.global_localization_min_score = 0.45
 POSE_GRAPH.constraint_builder.loop_closure_rotation_weight = 1e2
 
 POSE_GRAPH.constraint_builder.max_constraint_distance = 50.
-
--- POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.linear_xy_search_window = 50.
--- -- POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.linear_z_search_window = 30.
--- POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.angular_search_window = math.rad(30.)
+-- POSE_GRAPH.max_num_final_iterations=400
+POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.linear_xy_search_window = 25.
+POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.linear_z_search_window = 10.
+POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.angular_search_window = math.rad(15.)
 
 -- POSE_GRAPH.constraint_builder.ceres_scan_matcher.rotation_weight = 10.
 

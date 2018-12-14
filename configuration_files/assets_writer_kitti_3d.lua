@@ -34,8 +34,8 @@ options = {
     },
     -- {
     --   action = "intensity_to_color",
-    --   min_intensity = 0,
-    --   max_intensity = 100,
+    --   min_intensity = 0.,
+    --   max_intensity = 1.,
     -- },
     -- {
     --   action = "write_pcd",
