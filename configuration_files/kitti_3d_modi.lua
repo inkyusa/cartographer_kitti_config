@@ -57,12 +57,14 @@ TRAJECTORY_BUILDER_3D.submaps.high_resolution_max_range = 50.
 
 -- No point of trying to SLAM over the points on your car
 TRAJECTORY_BUILDER_3D.min_range = 1.0
-TRAJECTORY_BUILDER_3D.max_range = 60.
+TRAJECTORY_BUILDER_3D.max_range = 100.
 TRAJECTORY_BUILDER_3D.motion_filter.max_time_seconds = 0.5
 TRAJECTORY_BUILDER_3D.motion_filter.max_distance_meters = 0.3
 TRAJECTORY_BUILDER_3D.motion_filter.max_angle_radians = math.rad(5.)
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 4.5e1 --4e1
 TRAJECTORY_BUILDER_3D.ceres_scan_matcher.translation_weight = 7 --6
+--TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 5 --2e1 --4e1
+--TRAJECTORY_BUILDER_3D.ceres_scan_matcher.translation_weight = 3 --6
 
 -- ============================================
 --        MAP_BUILDER params (trivial thing that switching 2D or 3D)
@@ -74,6 +76,7 @@ MAP_BUILDER.num_background_threads = 8
 --        POSE_GRAPH params (global SLAM)
 -- ============================================
 -- The bigger the Huber scale, the higher is the impact of (potential) outliers.
+-- high huber scale allows more outliers with more noisy samples
 POSE_GRAPH.optimization_problem.huber_scale = 1e2
 
 --POSE_GRAPH.optimization_problem.rotation_weight = 6e5

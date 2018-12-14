@@ -17,9 +17,9 @@
 <launch>
   <param name="/use_sim_time" value="true" />
 
-  <node name="rviz" pkg="rviz" type="rviz" required="true"
+  <!-- <node name="rviz" pkg="rviz" type="rviz" required="true"
     args="-d $(find cartographer_kitti_config)/configuration_files/kitti_3d_for_debug.rviz">
-  </node>
+  </node> -->
 
   <node name="cartographer_offline_node" pkg="cartographer_ros"
       type="cartographer_offline_node" args="
