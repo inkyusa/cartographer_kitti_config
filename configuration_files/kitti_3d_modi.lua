@@ -49,15 +49,20 @@ TRAJECTORY_BUILDER_3D.ceres_scan_matcher.translation_weight = 5.
 TRAJECTORY_BUILDER_3D.use_online_correlative_scan_matching = true
 TRAJECTORY_BUILDER_3D.imu_gravity_time_constant = .1
 TRAJECTORY_BUILDER_3D.voxel_filter_size = 0.3
+--TRAJECTORY_BUILDER_3D.submaps.high_resolution = 0.2
 TRAJECTORY_BUILDER_3D.submaps.high_resolution = 0.2
+TRAJECTORY_BUILDER_3D.submaps.high_resolution_max_range = 50.
+-- TRAJECTORY_BUILDER_3D.submaps.num_range_data= 300.
+
 
 -- No point of trying to SLAM over the points on your car
 TRAJECTORY_BUILDER_3D.min_range = 1.0
-TRAJECTORY_BUILDER_3D.max_range = 50
+TRAJECTORY_BUILDER_3D.max_range = 50.
 TRAJECTORY_BUILDER_3D.motion_filter.max_time_seconds = 0.5
 TRAJECTORY_BUILDER_3D.motion_filter.max_distance_meters = 0.3
 TRAJECTORY_BUILDER_3D.motion_filter.max_angle_radians = math.rad(5.)
---TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 8e2
+TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 4e1
+TRAJECTORY_BUILDER_3D.ceres_scan_matcher.translation_weight = 8
 
 -- ============================================
 --        MAP_BUILDER params (trivial thing that switching 2D or 3D)
@@ -71,17 +76,26 @@ MAP_BUILDER.num_background_threads = 8
 POSE_GRAPH.optimization_problem.huber_scale = 5e2
 --POSE_GRAPH.optimization_problem.rotation_weight = 6e5
 --POSE_GRAPH.optimize_every_n_nodes = 320
-POSE_GRAPH.optimize_every_n_nodes = 100
+POSE_GRAPH.optimize_every_n_nodes = 150
+-- POSE_GRAPH.global_constraint_search_after_n_seconds = 3.
+POSE_GRAPH.global_sampling_ratio = 0.1
 
-POSE_GRAPH.constraint_builder.sampling_ratio = 0.03
+--POSE_GRAPH.constraint_builder.sampling_ratio = 0.03
+POSE_GRAPH.constraint_builder.sampling_ratio = 0.1
+
 POSE_GRAPH.optimization_problem.ceres_solver_options.max_num_iterations = 100
-POSE_GRAPH.constraint_builder.min_score = 0.62
-POSE_GRAPH.constraint_builder.global_localization_min_score = 0.66
+--POSE_GRAPH.constraint_builder.min_score = 0.62
+POSE_GRAPH.constraint_builder.min_score = 0.30
 
-POSE_GRAPH.constraint_builder.max_constraint_distance = 250.
-POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.linear_xy_search_window = 250.
-POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.linear_z_search_window = 30.
-POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.angular_search_window = math.rad(60.)
+--POSE_GRAPH.constraint_builder.global_localization_min_score = 0.66
+POSE_GRAPH.constraint_builder.global_localization_min_score = 0.30
+POSE_GRAPH.constraint_builder.loop_closure_rotation_weight = 1e2
+
+POSE_GRAPH.constraint_builder.max_constraint_distance = 50.
+
+-- POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.linear_xy_search_window = 50.
+-- -- POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.linear_z_search_window = 30.
+-- POSE_GRAPH.constraint_builder.fast_correlative_scan_matcher_3d.angular_search_window = math.rad(30.)
 
 -- POSE_GRAPH.constraint_builder.ceres_scan_matcher.rotation_weight = 10.
 
