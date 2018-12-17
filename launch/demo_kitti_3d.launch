@@ -17,10 +17,10 @@
   <include file="$(find cartographer_kitti_config)/launch/kitti_3d.launch" />
 
   <node name="rviz" pkg="rviz" type="rviz" required="true"
-    args="-d $(find cartographer_kitti_config)/configuration_files/kitti_3d_new.rviz">
+    args="-d $(find cartographer_kitti_config)/configuration_files/kitti_3d_rgb.rviz">
   </node>
   
-  <node name="playbag" pkg="rosbag" type="play" args="--clock -r 0.5 $(arg bag_filename)">
+  <node name="playbag" pkg="rosbag" type="play" args="--clock -r 0.2 $(arg bag_filename)">
     <remap from="/kitti/oxts/imu" to="imu" />
     <remap from="/kitti/velo/pointcloud" to="points2" />
     <remap from="/tf" to="/tf_in" />
