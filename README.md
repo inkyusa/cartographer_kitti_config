@@ -9,11 +9,11 @@ We provide two bag files (kitti_2011_09_30_drive_0027_synced_imu_velo.bag and ki
 
 
 Example
-Assuming you have a bag file at `/home/userHome/workspace/bags/kitti/kitti_2011_09_26_drive_0002_synced.bag`.
+Assuming you have a bag file at `/home/userHome/workspace/bags/kitti/kitti_2011_09_30_drive_0027_synced_imu_velo.bag`.
 
 ## demo KITTI 3D
 ```
-roslaunch cartographer_kitti_config demo_kitti_3d.launch bag_filename:=/home/userHome/workspace/bags/kitti/kitti_2011_09_26_drive_0002_synced.bag
+roslaunch cartographer_kitti_config demo_kitti_3d.launch bag_filename:=/home/userHome/workspace/bags/kitti/kitti_2011_09_30_drive_0027_synced_imu_velo.bag
 ```
 After execute the script, this is what you expect (Click the picture below to see a demonstration video)
   
@@ -21,10 +21,10 @@ After execute the script, this is what you expect (Click the picture below to se
 
 ## demo offline KITTI 3D
 ```
-roslaunch cartographer_kitti_config offline_kitti_3d.launch bag_filenames:=/home/userHome/workspace/bags/kitti/kitti_2011_09_26_drive_0002_synced.bag
+roslaunch cartographer_kitti_config offline_kitti_3d.launch bag_filenames:=/home/userHome/workspace/bags/kitti/kitti_2011_09_30_drive_0027_synced_imu_velo.bag
 ```
 ## assets writer KITTI 3D
 ```
-roslaunch cartographer_kitti_config assets_writer_kitti_3d.launch bag_filenames:=/home/userHome/workspace/bags/kitti/kitti_2011_09_26_drive_0002_synced.bag pose_graph_filename:=/home/userHome/workspace/bags/kitti/kitti_2011_09_26_drive_0002_synced.bag.pbstream
+roslaunch cartographer_kitti_config assets_writer_kitti_3d.launch bag_filenames:=/home/userHome/workspace/bags/kitti/kitti_2011_09_30_drive_0027_synced_imu_velo.bag pose_graph_filename:=/home/userHome/workspace/bags/kitti/kitti_2011_09_30_drive_0027_synced_imu_velo.bag.pbstream
 ```
 
