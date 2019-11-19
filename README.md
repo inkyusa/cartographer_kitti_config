@@ -30,3 +30,17 @@ roslaunch cartographer_kitti_config assets_writer_kitti_3d.launch bag_filenames:
 For the longer sequence dataset (i.e., kitti_2011_09_30_drive_0028_synced_imu_velo.bag), just substitue the name of bag file and you expect to see a similar figure as below (no stereo images).
 
 [![Click to see a demonstration video](http://drive.google.com/uc?export=view&id=1U2wUxhp15l5RxF3CckgjlxPGC4-Zh5N9)](https://youtu.be/mn4y3yQm3Pc)
+
+
+## Citation
+If this small piece of software is somehow useful for your work, please cite this repository:
+```
+@misc{kitti_lidar_cartographer_2018,
+  title={Cartographer configurations for processing KITTI datasets},
+  author={Inkyu Sa},
+  year={2018},
+  publisher={Github},
+  journal={GitHub repository},
+  howpublished={\url{https://tinyurl.com/ub35aah}},
+}
+```
