@@ -14,9 +14,10 @@ Examples below assume that you have a bag file at `/home/userHome/workspace/bags
 ```
 roslaunch cartographer_kitti_config demo_kitti_3d.launch bag_filename:=/home/userHome/workspace/bags/kitti/kitti_2011_09_30_drive_0027_synced_imu_velo.bag
 ```
-After execute the script, this is what you expect (Click the picture below to see a demonstration video)
-  
-[![Click to see a demonstration video](http://drive.google.com/uc?export=view&id=1xT_CpUWNchazHbj1URdJiahM7Jmd9QlU)](https://youtu.be/29Knm-phAyI)
+After execute the script, this is what you expect,
+
+<img src="http://drive.google.com/uc?export=view&id=1YHmrHMK3e7XNiHg9p34nF_eD4P1Xu0wV" height="450">
+https://youtu.be/29Knm-phAyI
 
 ## demo offline KITTI 3D
 ```
@@ -29,7 +30,8 @@ roslaunch cartographer_kitti_config assets_writer_kitti_3d.launch bag_filenames:
 
 For the longer sequence dataset (i.e., kitti_2011_09_30_drive_0028_synced_imu_velo.bag), just substitue the name of bag file and you expect to see a similar figure as below (no stereo images).
 
-[![Click to see a demonstration video](http://drive.google.com/uc?export=view&id=1U2wUxhp15l5RxF3CckgjlxPGC4-Zh5N9)](https://youtu.be/mn4y3yQm3Pc)
+<img src="http://drive.google.com/uc?export=view&id=1CZmB5XL2z3nIYwLFVKTzXCemA5JXPe8u" height="450">
+https://youtu.be/mn4y3yQm3Pc
 
 
 ## Citation
